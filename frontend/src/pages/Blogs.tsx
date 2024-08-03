@@ -19,6 +19,7 @@ export const Blogs = () => {
                 <div className="flex justify-center flex-col max-w-xl">
                     {
                         blogs.map(blog =><BlogCard
+                            id={blog.id}
                             authorName={blog.author.name || "Anonymous User"}
                             title={blog.title}
                             content={blog.content}
