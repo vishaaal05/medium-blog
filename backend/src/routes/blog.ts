@@ -2,8 +2,8 @@ import { Hono } from "hono";
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { verify } from "hono/jwt";
-import { createPostInput } from "@vishaaal05/medium-common";
-import { updatePostInput } from "@vishaaal05/medium-common";
+import { createPostInput } from "@vishaaal05/medium-common-update";
+import { updatePostInput } from "@vishaaal05/medium-common-update";
 
 
 export const blogRouter = new Hono<{
@@ -106,7 +106,18 @@ blogRouter.get('/bulk', async (c) => {
         datasourceUrl: c.env?.DATABASE_URL,
     }).$extends(withAccelerate());
     try {
-        const posts = await prisma.post.findMany();
+        const posts = await prisma.post.findMany({
+            select:{
+                content:true,
+                title:true,
+                id:true,
+                author:{
+                    select:{
+                        name:true
+                    }
+                }
+            }
+        });
         return c.json(posts);
     } catch (error) {
         return c.json({ message: 'An error occurred'}, { status: 500 });
