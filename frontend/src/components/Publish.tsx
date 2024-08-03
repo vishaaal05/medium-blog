@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Appbar from "./Appbar";
 import { BACKEND_URL } from "../config";
@@ -52,7 +52,6 @@ const Publish = () => {
                 <label htmlFor="message" className="block mb-2 mt-4 font-bold text-xl">Content</label>
                 <textarea 
                     id="message" 
-                    rows="4" 
                     value={content}
                     onChange={(e) => setContent(e.target.value)} // Update content state
                     className="block p-2.5 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" 
