@@ -16,27 +16,25 @@ export const BlogCard = ({
     publishedDate
 }: BlogCardProps) => {
     return <Link to={`/blog/${id}`}>
-        <div className="border-b border-slate-200 pb-4 cursor-pointer">
-            <div className="flex pt-5">
+        <div className="border-b border-slate-200 pb-8 pt-6 px-4 hover:bg-slate-50 transition-colors duration-200">
+            <div className="flex items-center">
                 <Avatar name={authorName} size="small" />
-                <div className=" flex justify-center flex-col ml-2 ">
-                    {authorName}
-                </div>
-                <div className="text-xs mt-1 mx-1 ">
-                    ●
-                </div>
-                <div className="text-slate-600">
-                    {publishedDate}
+                <div className="flex items-center ml-2 text-sm">
+                    <span className="font-medium">{authorName}</span>
+                    <span className="mx-2 text-slate-400">●</span>
+                    <span className="text-slate-600">{publishedDate}</span>
                 </div>
             </div>
-            <div className="text-2xl font-bold mt-3">
+            <h2 className="text-2xl font-bold mt-4 mb-2 text-dark font-serif">
                 {title}
-            </div>
-            <div className="text-slate-700">
-                {content.slice(0, 100) + "..."}
-            </div>
-            <div className="text-slate-500 pt-10">
-                {`${Math.ceil(content.length / 100)} minute(s) read`}
+            </h2>
+            <p className="text-slate-700 line-clamp-3 font-serif">
+                {content}
+            </p>
+            <div className="flex items-center mt-4 text-sm text-slate-500">
+                <span>{`${Math.ceil(content.length / 100)} minute read`}</span>
+                <span className="mx-2">●</span>
+                <span>Selected for you</span>
             </div>
         </div>
     </Link>
