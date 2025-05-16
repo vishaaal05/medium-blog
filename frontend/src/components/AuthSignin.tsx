@@ -1,9 +1,13 @@
-import { SigninInput } from "@vishaaal05/medium-common-update"
 import { ChangeEvent, useState } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
 import { BACKEND_URL } from "../config"
 import { useNavigate } from "react-router-dom"
+
+interface SigninInput {
+  email: string;
+  password: string;
+}
 
 const AuthSignin = () => {
 

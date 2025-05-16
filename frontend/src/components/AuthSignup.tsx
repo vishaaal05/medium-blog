@@ -1,9 +1,14 @@
-import { SignupInput } from "@vishaaal05/medium-common-update"
 import axios from "axios"
 import { ChangeEvent, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { BACKEND_URL } from "../config"
 
+
+interface SignupInput {
+  name?: string;
+  email: string;
+  password: string;
+}
 
 const AuthSignup = () => {
   const [postInputs, setPostInputs] = useState<SignupInput>({
